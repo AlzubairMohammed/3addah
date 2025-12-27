@@ -19,12 +19,10 @@
             font-family: 'Poppins', sans-serif;
         }
         
-        /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Custom Animations */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -41,7 +39,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Phone Mockup Styling */
         .phone-frame {
             border: 12px solid #1f2937;
             border-radius: 40px;
@@ -64,27 +61,26 @@
             z-index: 10;
         }
         
-        /* Legal Page Typography */
         .legal-content h2 {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             margin-bottom: 1rem;
-            color: #1f2937;
+            color: #111827;
         }
         .legal-content p {
-            margin-bottom: 1rem;
-            color: #4b5563;
-            line-height: 1.6;
+            margin-bottom: 1.25rem;
+            color: #374151;
+            line-height: 1.8;
         }
         .legal-content ul {
             list-style-type: disc;
             padding-left: 1.5rem;
-            margin-bottom: 1rem;
-            color: #4b5563;
+            margin-bottom: 1.5rem;
+            color: #374151;
         }
         .legal-content li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
     </style>
 
@@ -96,7 +92,7 @@
                         brand: {
                             50: '#fff7ed',
                             100: '#ffedd5',
-                            500: '#f97316', /* Vibrant Orange */
+                            500: '#f97316',
                             600: '#ea580c',
                             900: '#7c2d12',
                         }
@@ -118,13 +114,20 @@
                     <span id="logo-text" class="hidden text-2xl font-bold text-brand-600 ml-2">3addah</span>
                 </div>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#" onclick="switchView('home-view'); setTimeout(() => document.getElementById('features').scrollIntoView(), 100);" class="text-gray-600 hover:text-brand-500 font-medium transition">Features</a>
-                    <a href="#" onclick="switchView('home-view'); setTimeout(() => document.getElementById('how-it-works').scrollIntoView(), 100);" class="text-gray-600 hover:text-brand-500 font-medium transition">How it Works</a>
-                    <a href="#" onclick="switchView('home-view'); setTimeout(() => document.getElementById('testimonials').scrollIntoView(), 100);" class="text-gray-600 hover:text-brand-500 font-medium transition">Reviews</a>
-                    <a href="https://wa.me/249913576912" class="bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-semibold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">
+                <!-- Desktop Menu (Hidden on Legal Pages) -->
+                <div id="desktop-nav" class="hidden md:flex space-x-8 items-center">
+                    <a href="#features" class="text-gray-600 hover:text-brand-500 font-medium transition">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-brand-500 font-medium transition">How it Works</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-brand-500 font-medium transition">Reviews</a>
+                    <a href="https://wa.me/249000000000" class="bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-semibold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">
                         Order Now
+                    </a>
+                </div>
+
+                <!-- Back Home Link (Visible only on Legal Pages) -->
+                <div id="back-home-nav" class="hidden md:flex items-center">
+                    <a href="#" onclick="switchView('home-view'); return false;" class="text-brand-600 hover:text-brand-700 font-semibold flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Home
                     </a>
                 </div>
 
@@ -139,11 +142,8 @@
 
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#" onclick="switchView('home-view'); document.getElementById('features').scrollIntoView();" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-brand-500 hover:bg-gray-50 rounded-md">Features</a>
-                <a href="#" onclick="switchView('home-view'); document.getElementById('how-it-works').scrollIntoView();" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-brand-500 hover:bg-gray-50 rounded-md">How it Works</a>
-                <a href="#" onclick="switchView('home-view'); document.getElementById('testimonials').scrollIntoView();" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-brand-500 hover:bg-gray-50 rounded-md">Reviews</a>
-                <a href="https://wa.me/249913576912" class="block w-full text-center mt-4 bg-brand-500 text-white px-3 py-3 rounded-lg font-bold">Order Now</a>
+            <div class="px-4 pt-2 pb-6 space-y-2" id="mobile-links">
+                <!-- Links dynamically injected or hidden via switchView -->
             </div>
         </div>
     </nav>
@@ -156,14 +156,8 @@
             <!-- Hero Section -->
             <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-br from-brand-50 to-white -z-10"></div>
-                
-                <!-- Background Shapes -->
-                <div class="absolute top-20 right-0 w-96 h-96 bg-brand-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
-                <div class="absolute bottom-20 left-0 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <!-- Text Content -->
                         <div class="text-center lg:text-left space-y-8">
                             <div class="inline-flex items-center px-4 py-2 bg-brand-100 text-brand-600 rounded-full text-sm font-semibold mb-2">
                                 <i class="fas fa-bolt mr-2"></i> Super Fast Delivery
@@ -173,11 +167,10 @@
                                 <span class="bg-gradient-to-r from-brand-500 to-yellow-500 gradient-text text-transparent">delivered instantly.</span>
                             </h1>
                             <p class="text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0">
-                                3addah brings your city to your doorstep. From groceries to gear, get what you need in minutes, not hours.
+                                3addah brings your city to your doorstep. From groceries to gear, get what you need in minutes via WhatsApp.
                             </p>
-                            
                             <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                                <a href="https://wa.me/249913576912" class="flex items-center justify-center bg-brand-500 text-white px-10 py-5 rounded-2xl hover:bg-brand-600 transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                                <a href="https://wa.me/249000000000" class="flex items-center justify-center bg-brand-500 text-white px-10 py-5 rounded-2xl hover:bg-brand-600 transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
                                     <i class="fab fa-whatsapp text-3xl mr-3"></i>
                                     <div class="text-left">
                                         <div class="text-xs opacity-90">Order on WhatsApp</div>
@@ -185,75 +178,30 @@
                                     </div>
                                 </a>
                             </div>
-
-                            <div class="pt-4 flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-500">
-                                <div class="flex -space-x-2">
-                                    <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64" alt="">
-                                    <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=64&h=64" alt="">
-                                    <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=64&h=64" alt="">
-                                </div>
-                                <p>Trusted by <span class="font-bold text-gray-800">10k+</span> users</p>
-                            </div>
                         </div>
-
-                        <!-- Hero Image / Illustration -->
+                        <!-- App Mockup -->
                         <div class="relative lg:h-auto flex justify-center animate-float">
-                            <!-- Decorative Circle -->
-                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-brand-400 to-yellow-300 rounded-full opacity-20 filter blur-2xl"></div>
-                            
-                            <!-- App Mockup -->
                             <div class="phone-frame w-72 h-[580px] bg-white z-10 mx-auto">
                                 <div class="phone-notch"></div>
-                                <!-- Mockup Screen Content -->
                                 <div class="h-full w-full overflow-hidden bg-gray-50 flex flex-col">
-                                    <!-- Mock App Header -->
                                     <div class="bg-brand-500 h-32 p-6 flex flex-col justify-end">
                                         <p class="text-brand-100 text-sm">Good Morning,</p>
                                         <h3 class="text-white text-2xl font-bold">Ahmed</h3>
                                     </div>
-                                    <!-- Mock App Body -->
-                                    <div class="p-4 space-y-4 flex-1 overflow-y-hidden relative">
-                                        <!-- Search Bar -->
-                                        <div class="bg-white p-3 rounded-lg shadow-sm flex items-center text-gray-400 text-sm">
-                                            <i class="fas fa-search mr-3"></i> Find food, groceries...
-                                        </div>
-                                        <!-- Categories -->
+                                    <div class="p-4 space-y-4 flex-1">
+                                        <div class="bg-white p-3 rounded-lg shadow-sm flex items-center text-gray-400 text-sm"><i class="fas fa-search mr-3"></i> Find food, groceries...</div>
                                         <div class="grid grid-cols-4 gap-2">
-                                            <div class="flex flex-col items-center gap-1">
-                                                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-brand-500"><i class="fas fa-hamburger"></i></div>
-                                                <span class="text-[10px] font-medium text-gray-600">Food</span>
-                                            </div>
-                                            <div class="flex flex-col items-center gap-1">
-                                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-500"><i class="fas fa-carrot"></i></div>
-                                                <span class="text-[10px] font-medium text-gray-600">Grocery</span>
-                                            </div>
-                                            <div class="flex flex-col items-center gap-1">
-                                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-500"><i class="fas fa-pills"></i></div>
-                                                <span class="text-[10px] font-medium text-gray-600">Pharma</span>
-                                            </div>
-                                            <div class="flex flex-col items-center gap-1">
-                                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-500"><i class="fas fa-box"></i></div>
-                                                <span class="text-[10px] font-medium text-gray-600">Package</span>
-                                            </div>
+                                            <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-brand-500"><i class="fas fa-hamburger"></i></div></div>
+                                            <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-500"><i class="fas fa-carrot"></i></div></div>
+                                            <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-500"><i class="fas fa-pills"></i></div></div>
+                                            <div class="flex flex-col items-center gap-1"><div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-500"><i class="fas fa-box"></i></div></div>
                                         </div>
-                                        <!-- Map Graphic -->
-                                        <div class="h-48 bg-gray-200 rounded-xl relative overflow-hidden mt-4">
-                                            <div class="absolute inset-0 opacity-50 bg-[url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg')] bg-cover"></div>
-                                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                                <div class="w-32 h-10 bg-white rounded-full shadow-lg flex items-center px-2 gap-2 animate-bounce">
-                                                    <div class="w-8 h-8 bg-brand-500 rounded-full flex items-center justify-center text-white text-xs"><i class="fas fa-motorcycle"></i></div>
-                                                    <div class="text-[10px] font-bold">Arriving in 5m</div>
-                                                </div>
-                                            </div>
+                                        <div class="h-40 bg-gray-200 rounded-xl relative overflow-hidden mt-4">
+                                            <div class="absolute inset-0 opacity-50 bg-[url('https://www.google.com/maps/vt/pb=!1m4!1m3!1i13!2i4823!3i3124!2m3!1e0!2sm!3i605141066!3m8!2sen!3sus!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0!5m1!1f2!2sumid!7')] bg-cover"></div>
                                         </div>
                                     </div>
-                                    <!-- Mock Bottom Nav -->
-                                    <div class="bg-white h-16 border-t flex justify-around items-center text-gray-400 text-xl px-2">
-                                        <i class="fas fa-home text-brand-500"></i>
-                                        <i class="fas fa-compass"></i>
-                                        <div class="w-12 h-12 bg-brand-500 rounded-full -mt-6 flex items-center justify-center text-white shadow-lg border-4 border-white"><i class="fas fa-shopping-basket"></i></div>
-                                        <i class="fas fa-receipt"></i>
-                                        <i class="fas fa-user"></i>
+                                    <div class="bg-white h-16 border-t flex justify-around items-center text-gray-400">
+                                        <i class="fas fa-home text-brand-500"></i><i class="fas fa-compass"></i><i class="fas fa-receipt"></i><i class="fas fa-user"></i>
                                     </div>
                                 </div>
                             </div>
@@ -262,91 +210,48 @@
                 </div>
             </section>
 
-            <!-- Features Section -->
+            <!-- Features -->
             <section id="features" class="py-20 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center max-w-3xl mx-auto mb-16">
-                        <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2">Why Choose 3addah</h2>
-                        <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Delivery designed for your lifestyle</h3>
-                        <p class="text-gray-500 text-lg">We didn't just build an app; we built a logistical network that puts speed and reliability first.</p>
-                    </div>
-
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                        <!-- Feature 1 -->
-                        <div class="bg-gray-50 rounded-2xl p-8 transition hover:shadow-xl hover:-translate-y-1 border border-gray-100">
-                            <div class="w-14 h-14 bg-brand-100 rounded-xl flex items-center justify-center text-brand-500 text-2xl mb-6">
-                                <i class="fas fa-bolt"></i>
-                            </div>
+                        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                            <div class="w-14 h-14 bg-brand-100 rounded-xl flex items-center justify-center text-brand-500 text-2xl mb-6"><i class="fas fa-bolt"></i></div>
                             <h4 class="text-xl font-bold text-gray-900 mb-3">Lightning Fast</h4>
-                            <p class="text-gray-600">Our smart dispatch algorithm finds the nearest driver instantly, ensuring your order arrives while it's still hot.</p>
+                            <p class="text-gray-600">Our smart dispatch finds the nearest driver instantly, ensuring your order arrives hot.</p>
                         </div>
-
-                        <!-- Feature 2 -->
-                        <div class="bg-gray-50 rounded-2xl p-8 transition hover:shadow-xl hover:-translate-y-1 border border-gray-100">
-                            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-500 text-2xl mb-6">
-                                <i class="fas fa-map-marked-alt"></i>
-                            </div>
+                        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-500 text-2xl mb-6"><i class="fas fa-map-marked-alt"></i></div>
                             <h4 class="text-xl font-bold text-gray-900 mb-3">Real-Time Tracking</h4>
-                            <p class="text-gray-600">Watch your delivery driver move on the map in real-time. No more guessing games or vague delivery windows.</p>
+                            <p class="text-gray-600">Watch your delivery hero move on the map. No more guessing windows.</p>
                         </div>
-
-                        <!-- Feature 3 -->
-                        <div class="bg-gray-50 rounded-2xl p-8 transition hover:shadow-xl hover:-translate-y-1 border border-gray-100">
-                            <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-green-500 text-2xl mb-6">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
+                        <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                            <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-green-500 text-2xl mb-6"><i class="fas fa-shield-alt"></i></div>
                             <h4 class="text-xl font-bold text-gray-900 mb-3">Secure & Safe</h4>
-                            <p class="text-gray-600">Contactless delivery options and secure payment gateways keep you and your transactions safe every time.</p>
+                            <p class="text-gray-600">Contactless delivery and secure payments keep you and your home safe.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- How It Works -->
+            <!-- How it works -->
             <section id="how-it-works" class="py-20 bg-brand-50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div class="order-2 lg:order-1 relative">
-                            <img src="https://images.unsplash.com/photo-1616401784845-180886ba9ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Delivery Guy" class="rounded-2xl shadow-2xl z-10 relative">
-                            <!-- Decor -->
-                            <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-yellow-300 rounded-full z-0 opacity-50"></div>
-                            <div class="absolute -top-10 -right-10 w-24 h-24 bg-brand-500 rounded-full z-0 opacity-20"></div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl font-bold mb-12">From order to door in 3 steps</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <div class="w-16 h-16 bg-brand-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
+                            <h4 class="text-xl font-bold mb-2">Message Us</h4>
+                            <p class="text-gray-600">Tell us what you need via WhatsApp.</p>
                         </div>
-                        
-                        <div class="order-1 lg:order-2">
-                            <h3 class="text-3xl font-bold text-gray-900 mb-8">From order to door in 3 simple steps</h3>
-                            
-                            <div class="space-y-8">
-                                <div class="flex">
-                                    <div class="flex-shrink-0">
-                                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-brand-500 text-white font-bold text-xl">1</div>
-                                    </div>
-                                    <div class="ml-6">
-                                        <h4 class="text-xl font-bold text-gray-900">Choose what you need</h4>
-                                        <p class="mt-2 text-gray-600">Browse hundreds of local stores, restaurants, and pharmacies directly in the 3addah app.</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex">
-                                    <div class="flex-shrink-0">
-                                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-brand-500 text-white font-bold text-xl">2</div>
-                                    </div>
-                                    <div class="ml-6">
-                                        <h4 class="text-xl font-bold text-gray-900">We pick it up</h4>
-                                        <p class="mt-2 text-gray-600">A nearby 3addah hero accepts your request and heads to the store instantly.</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex">
-                                    <div class="flex-shrink-0">
-                                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-brand-500 text-white font-bold text-xl">3</div>
-                                    </div>
-                                    <div class="ml-6">
-                                        <h4 class="text-xl font-bold text-gray-900">Delivered to you</h4>
-                                        <p class="mt-2 text-gray-600">Sit back and relax. Your items arrive at your doorstep in minutes.</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div>
+                            <div class="w-16 h-16 bg-brand-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
+                            <h4 class="text-xl font-bold mb-2">We Pick Up</h4>
+                            <p class="text-gray-600">A Hero picks it up from the store.</p>
+                        </div>
+                        <div>
+                            <div class="w-16 h-16 bg-brand-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
+                            <h4 class="text-xl font-bold mb-2">Delivered</h4>
+                            <p class="text-gray-600">Items arrive at your door in minutes.</p>
                         </div>
                     </div>
                 </div>
@@ -355,154 +260,134 @@
             <!-- Testimonials -->
             <section id="testimonials" class="py-20 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-12">What our users say</h2>
+                    <h2 class="text-3xl font-bold mb-12">What our users say</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <!-- Card 1 -->
-                        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-                            <div class="flex items-center justify-center mb-4 text-yellow-400">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="text-gray-600 italic mb-6">"3addah saved me so many times! Whether it's lunch for the office or forgotten keys, they are super fast."</p>
-                            <div class="font-bold text-gray-900">- Sarah M.</div>
+                        <div class="bg-white p-8 rounded-xl shadow-md border border-gray-50">
+                            <p class="text-gray-600 italic">"3addah saved me! lunch for the office arrived in 15 minutes."</p>
+                            <div class="mt-4 font-bold">- Sarah M.</div>
                         </div>
-                        <!-- Card 2 -->
-                        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 transform md:-translate-y-4">
-                            <div class="flex items-center justify-center mb-4 text-yellow-400">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="text-gray-600 italic mb-6">"The best UI I've seen in a local delivery app. It's smooth, reliable, and the drivers are very professional."</p>
-                            <div class="font-bold text-gray-900">- Omar K.</div>
+                        <div class="bg-white p-8 rounded-xl shadow-md border border-gray-50">
+                            <p class="text-gray-600 italic">"Smooth ordering via WhatsApp. Professional drivers every time."</p>
+                            <div class="mt-4 font-bold">- Omar K.</div>
                         </div>
-                        <!-- Card 3 -->
-                        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-                            <div class="flex items-center justify-center mb-4 text-yellow-400">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <p class="text-gray-600 italic mb-6">"Finally an app that actually delivers on time. The tracking feature is spot on."</p>
-                            <div class="font-bold text-gray-900">- Layla H.</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CTA Section -->
-            <section id="download" class="py-20">
-                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="bg-brand-500 rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
-                        <!-- Abstract Circles -->
-                        <div class="absolute top-0 left-0 w-64 h-64 bg-white opacity-10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                        <div class="absolute bottom-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full translate-x-1/2 translate-y-1/2"></div>
-                        
-                        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 relative z-10">Ready to order?</h2>
-                        <p class="text-brand-100 text-lg mb-10 max-w-2xl mx-auto relative z-10">Send us a message on WhatsApp and get anything delivered instantly. First delivery is on us!</p>
-                        
-                        <div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
-                            <a href="https://wa.me/249913576912" class="bg-gray-900 text-white px-10 py-4 rounded-xl font-bold hover:bg-gray-800 transition flex items-center justify-center shadow-2xl">
-                                <i class="fab fa-whatsapp mr-3 text-2xl text-green-500"></i> Order via WhatsApp
-                            </a>
+                        <div class="bg-white p-8 rounded-xl shadow-md border border-gray-50">
+                            <p class="text-gray-600 italic">"Finally a service that is actually fast. Tracking is spot on."</p>
+                            <div class="mt-4 font-bold">- Layla H.</div>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
 
-        <!-- TERMS OF SERVICE VIEW -->
-        <main id="terms-view" class="hidden pt-32 pb-20 max-w-4xl mx-auto px-4 legal-content">
-            <h1 class="text-4xl font-bold text-gray-900 mb-8">Terms of Service</h1>
-            <p class="text-sm text-gray-500 mb-8">Last Updated: October 24, 2024</p>
-            
-            <p>Welcome to 3addah. By accessing our website or using our services, you agree to be bound by these Terms of Service.</p>
+        <!-- TERMS OF SERVICE PAGE -->
+        <main id="terms-view" class="hidden pt-32 pb-24">
+            <div class="max-w-4xl mx-auto px-4 legal-content bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
+                <div class="mb-10 text-center">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">Terms of Service</h1>
+                    <p class="text-gray-500">Effective Date: December 27, 2024</p>
+                    <div class="h-1 w-20 bg-brand-500 mx-auto mt-6"></div>
+                </div>
+                
+                <p>By using the 3addah delivery service, you agree to these terms. Please read them carefully before placing your first order.</p>
 
-            <h2>1. Services Provided</h2>
-            <p>3addah is a logistics platform that connects users with independent delivery partners ("Heroes") to transport items. We do not sell merchandise; we provide the technology to facilitate delivery.</p>
+                <h2>1. Acceptance of Terms</h2>
+                <p>Access to and use of 3addah's services are subject to your compliance with these Terms. If you do not agree, you must not use our service.</p>
 
-            <h2>2. User Accounts</h2>
-            <p>To use 3addah, you must provide a valid phone number or WhatsApp account. You agree to provide accurate, current, and complete information.</p>
+                <h2>2. Service Description</h2>
+                <p>3addah provides a technology platform that connects users with independent delivery contractors ("Heroes"). 3addah is a facilitator and is not responsible for the quality of products purchased from third-party merchants.</p>
 
-            <h2>3. Prohibited Items</h2>
-            <p>Users may not use 3addah to deliver:</p>
-            <ul>
-                <li>Illegal drugs or controlled substances.</li>
-                <li>Weapons, explosives, or firearms.</li>
-                <li>Live animals (except legally recognized service animals).</li>
-                <li>Stolen goods or dangerous hazardous materials.</li>
-            </ul>
+                <h2>3. WhatsApp Ordering</h2>
+                <p>By initiating an order via WhatsApp, you consent to receive communications from 3addah and its delivery partners. Standard messaging rates from your mobile provider may apply.</p>
 
-            <h2>4. Payments and Fees</h2>
-            <p>Delivery fees are calculated based on distance, demand, and time. All fees are displayed before you confirm your order. Payments are processed securely via third-party payment gateways or cash on delivery where applicable.</p>
+                <h2>4. Prohibited Items</h2>
+                <p>We do not deliver illegal substances, hazardous materials, weapons, or items that violate local laws. Heroes reserve the right to refuse a delivery if the item is deemed unsafe.</p>
 
-            <h2>5. Limitation of Liability</h2>
-            <p>3addah is not liable for indirect, incidental, special, exemplary, punitive, or consequential damages, including lost profits, lost data, personal injury, or property damage related to, in connection with, or otherwise resulting from any use of the services.</p>
+                <h2>5. Payment Terms</h2>
+                <p>Payment is due upon delivery unless a digital payment method is pre-arranged. Fees include the cost of goods plus a dynamic delivery fee calculated by distance and demand.</p>
 
-            <h2>6. Contact Us</h2>
-            <p>If you have any questions about these Terms, please contact us at support@3addah.com.</p>
+                <h2>6. Limitation of Liability</h2>
+                <p>3addah is not liable for indirect or consequential damages. Our total liability is limited to the delivery fee paid for the specific order in question.</p>
+
+                <div class="mt-12 pt-10 border-t border-gray-100">
+                    <a href="#" onclick="switchView('home-view'); return false;" class="text-brand-600 font-bold hover:underline">
+                        Return to Homepage
+                    </a>
+                </div>
+            </div>
         </main>
 
-        <!-- PRIVACY POLICY VIEW -->
-        <main id="privacy-view" class="hidden pt-32 pb-20 max-w-4xl mx-auto px-4 legal-content">
-            <h1 class="text-4xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
-            <p class="text-sm text-gray-500 mb-8">Last Updated: October 24, 2024</p>
+        <!-- PRIVACY POLICY PAGE -->
+        <main id="privacy-view" class="hidden pt-32 pb-24">
+            <div class="max-w-4xl mx-auto px-4 legal-content bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
+                <div class="mb-10 text-center">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
+                    <p class="text-gray-500">Effective Date: December 27, 2024</p>
+                    <div class="h-1 w-20 bg-brand-500 mx-auto mt-6"></div>
+                </div>
 
-            <p>At 3addah, we value your privacy. This Privacy Policy explains how we collect, use, and disclose your information.</p>
+                <p>Your privacy is paramount. This policy describes how 3addah collects, uses, and shares your personal data.</p>
 
-            <h2>1. Information We Collect</h2>
-            <p>We collect information you provide directly to us, such as when you send us a message on WhatsApp or request on-demand services. This information may include: name, phone number, and delivery address.</p>
+                <h2>1. Information We Collect</h2>
+                <p>We collect information necessary to fulfill your delivery, including:</p>
+                <ul>
+                    <li>Contact details (Name, Phone Number, WhatsApp ID).</li>
+                    <li>Location data (Delivery address and real-time coordinates).</li>
+                    <li>Transaction history (Items ordered and payment details).</li>
+                </ul>
 
-            <h2>2. Location Information</h2>
-            <p>When you use 3addah for delivery, we collect precise location data about the delivery. If you share your location via WhatsApp, we use that data to facilitate the pickup and drop-off.</p>
+                <h2>2. How We Use Data</h2>
+                <p>We use your data solely to provide, improve, and secure our services. This includes sharing your address with the Delivery Hero assigned to your order.</p>
 
-            <h2>3. How We Use Your Information</h2>
-            <p>We use the information we collect to:</p>
-            <ul>
-                <li>Provide, maintain, and improve our services.</li>
-                <li>Facilitate payments and send receipts.</li>
-                <li>Send you technical notices, updates, security alerts, and support messages.</li>
-                <li>Respond to your comments, questions, and requests.</li>
-            </ul>
+                <h2>3. Data Retention</h2>
+                <p>We retain your information for as long as necessary to provide our services and comply with legal obligations. You may request deletion of your account and data at any time.</p>
 
-            <h2>4. Sharing of Information</h2>
-            <p>We may share the information we collect about you with delivery partners to enable them to provide the services you request. For example, we share your name and delivery address with the driver who picks up your order.</p>
+                <h2>4. Third-Party Sharing</h2>
+                <p>We do not sell your data. We share information only with service providers (like map services and payment processors) required to complete your delivery.</p>
 
-            <h2>5. Data Security</h2>
-            <p>We implement appropriate technical and organizational measures to help protect your personal information from unauthorized access, use, or disclosure.</p>
+                <h2>5. Security</h2>
+                <p>We use industry-standard encryption and security protocols to protect your data from unauthorized access or disclosure.</p>
+
+                <div class="mt-12 pt-10 border-t border-gray-100">
+                    <a href="#" onclick="switchView('home-view'); return false;" class="text-brand-600 font-bold hover:underline">
+                        Return to Homepage
+                    </a>
+                </div>
+            </div>
         </main>
         
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer class="bg-gray-900 text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
             <div class="col-span-1 md:col-span-1">
                 <div class="flex items-center text-white text-2xl font-bold mb-4">
                     <i class="fas fa-box-open text-brand-500 mr-2"></i> 3addah
                 </div>
-                <p class="text-sm">Delivering happiness to your doorstep, one order at a time.</p>
+                <p class="text-sm leading-relaxed">Delivering everything you need through the power of WhatsApp. Fast, reliable, and local.</p>
             </div>
             
             <div>
-                <h4 class="text-white font-bold mb-4">Company</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#" class="hover:text-brand-500 transition">About Us</a></li>
-                    <li><a href="#" class="hover:text-brand-500 transition">Careers</a></li>
-                    <li><a href="#" class="hover:text-brand-500 transition">Blog</a></li>
+                <h4 class="text-white font-bold mb-6">Explore</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" onclick="switchView('home-view'); return false;" class="hover:text-brand-500 transition">Home</a></li>
+                    <li><a href="#" onclick="switchView('home-view'); setTimeout(()=>document.getElementById('features').scrollIntoView(),100); return false;" class="hover:text-brand-500 transition">Features</a></li>
+                    <li><a href="#" onclick="switchView('home-view'); setTimeout(()=>document.getElementById('how-it-works').scrollIntoView(),100); return false;" class="hover:text-brand-500 transition">How it Works</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="text-white font-bold mb-4">Support</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#" class="hover:text-brand-500 transition">Help Center</a></li>
+                <h4 class="text-white font-bold mb-6">Legal</h4>
+                <ul class="space-y-3 text-sm">
                     <li><a href="#" onclick="switchView('terms-view'); return false;" class="hover:text-brand-500 transition">Terms of Service</a></li>
                     <li><a href="#" onclick="switchView('privacy-view'); return false;" class="hover:text-brand-500 transition">Privacy Policy</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="text-white font-bold mb-4">Follow Us</h4>
+                <h4 class="text-white font-bold mb-6">Connect</h4>
                 <div class="flex space-x-4">
-                    <a href="https://wa.me/249913576912" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-500 hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-500 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-500 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                    <a href="https://wa.me/249000000000" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-500 hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
                     <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-500 hover:text-white transition"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
@@ -513,44 +398,71 @@
     </footer>
 
     <script>
-        // View Switching Logic
+        // SPA View Switching Logic
         function switchView(viewId) {
-            // Hide all views
             const views = ['home-view', 'terms-view', 'privacy-view'];
+            
+            // Hide all views
             views.forEach(id => {
-                document.getElementById(id).classList.add('hidden');
+                const el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
             });
             
-            // Show requested view
+            // Show target view
             const target = document.getElementById(viewId);
             if(target) {
                 target.classList.remove('hidden');
                 window.scrollTo(0,0);
             }
 
-            // Close mobile menu if open
+            // Adjust Navbar Content
+            const desktopNav = document.getElementById('desktop-nav');
+            const backHomeNav = document.getElementById('back-home-nav');
+            
+            if (viewId === 'home-view') {
+                desktopNav.classList.remove('hidden');
+                backHomeNav.classList.add('hidden');
+            } else {
+                desktopNav.classList.add('hidden');
+                backHomeNav.classList.remove('hidden');
+            }
+
+            // Update Mobile Menu Links
+            const mobileLinks = document.getElementById('mobile-links');
+            if (viewId === 'home-view') {
+                mobileLinks.innerHTML = `
+                    <a href="#features" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-brand-500 hover:bg-gray-50 rounded-md">Features</a>
+                    <a href="#how-it-works" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-brand-500 hover:bg-gray-50 rounded-md">How it Works</a>
+                    <a href="#testimonials" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-brand-500 hover:bg-gray-50 rounded-md">Reviews</a>
+                    <a href="https://wa.me/249000000000" class="block w-full text-center mt-4 bg-brand-500 text-white px-3 py-3 rounded-lg font-bold">Order Now</a>
+                `;
+            } else {
+                mobileLinks.innerHTML = `
+                    <a href="#" onclick="switchView('home-view'); return false;" class="block px-3 py-2 text-base font-medium text-brand-600 hover:bg-brand-50 rounded-md"><i class="fas fa-arrow-left mr-2"></i> Back to Home</a>
+                `;
+            }
+
+            // Close mobile menu
             document.getElementById('mobile-menu').classList.add('hidden');
         }
 
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
+        // Initialize mobile links on load
+        switchView('home-view');
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
-        // Sticky Navbar on Scroll
+        // Sticky Navbar
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) {
-                nav.classList.add('shadow-md');
+                nav.classList.add('shadow-md', 'bg-white');
                 nav.classList.remove('bg-white/90');
-                nav.classList.add('bg-white');
             } else {
-                nav.classList.remove('shadow-md');
+                nav.classList.remove('shadow-md', 'bg-white');
                 nav.classList.add('bg-white/90');
-                nav.classList.remove('bg-white');
             }
         });
     </script>
